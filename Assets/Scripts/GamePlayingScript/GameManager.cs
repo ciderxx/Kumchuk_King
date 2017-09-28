@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    public GameObject _ReadyImage;
+    public GameObject _StartImage;
+
     private int _temptime = 0;
 
     public static bool inGame;
 
-    void Start()
+    private void Awake()
     {
         inGame = false;
         _temptime = System.DateTime.Now.Second;
@@ -25,15 +28,19 @@ public class GameManager : MonoBehaviour {
         switch (System.DateTime.Now.Second - _temptime)
         {
             case 1:
-                Debug.Log("ready");
+                _ReadyImage.SetActive(true);
                 break;
             case 2:
-                Debug.Log("ready2");
+                _ReadyImage.SetActive(true);
                 break;
             case 3:
+                _ReadyImage.SetActive(false);
+                _StartImage.SetActive(true);
                 inGame = true;
-                Debug.Log("Start");
                 Time.timeScale = 1;
+                break;
+            case 4:
+                _StartImage.SetActive(false);
                 break;
         }
     }

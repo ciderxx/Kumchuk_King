@@ -19,6 +19,10 @@ public class PlayerMove : MonoBehaviour {
     private float _moveHurry = 10f;
     private float _stopTime = 0.8f;
 
+
+    private IEnumerator _eat;
+
+    private bool _eatingType;
     private bool _direction;
     private int _type;
 
@@ -41,14 +45,13 @@ public class PlayerMove : MonoBehaviour {
         {
             Move();
         }
-
         if (GameOverManager._gameOver)
         {
             _anim.SetBool("GameOver", true);
         }
     }
 
-    public int type
+    public int type // touch
     {
         set
         {
@@ -124,6 +127,7 @@ public class PlayerMove : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D fruit)
     {
+        EatAnimation();
         if (fruit.transform.CompareTag("gibon"))
         {
             _hungerScript.HpUp(HungerBar.FruitType.gibon);
@@ -156,6 +160,21 @@ public class PlayerMove : MonoBehaviour {
             _scoreScript.fruitScore(GameScore.FruitScore.kumchuk);
             StartCoroutine(KumchukFruitTimer());
         }
+    }
+
+    private void EatAnimation()
+    {
+        _eat = FruitEat();
+        _eatingType = true;
+
+        StartCoroutine(_eat);
+    }
+
+    IEnumerator FruitEat()
+    {
+        _anim.SetBool("Eat", true);
+        yield return new WaitForSeconds(0.5f);
+        _anim.SetBool("Eat", false);
     }
 
     IEnumerator AkuFruitTimer()

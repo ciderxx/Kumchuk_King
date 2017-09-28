@@ -20,15 +20,13 @@ public class GameOverManager : MonoBehaviour {
         }
         else
             return;
-
-        Debug.Log(_gameOver);
 	}
 
     public void GameOver()
     {
         GameManager.inGame = false;
         _gameOver = true;
-        Invoke("GameOverNextScene",5.0f);
+        Invoke("GameOverNextScene",2.1f);
     }
 
     private void GameOverNextScene()
