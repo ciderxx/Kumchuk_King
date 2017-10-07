@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour {
     private void Awake()
     {
         inGame = false;
+        GameOverManager._gameOver = false;
+    }
+    private void Start()
+    {
         _temptime = System.DateTime.Now.Second;
         Time.timeScale = 0;
     }

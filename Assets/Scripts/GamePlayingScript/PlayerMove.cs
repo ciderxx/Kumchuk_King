@@ -44,10 +44,14 @@ public class PlayerMove : MonoBehaviour {
         if (GameManager.inGame)
         {
             Move();
-        }
-        if (GameOverManager._gameOver)
-        {
-            _anim.SetBool("GameOver", true);
+            if (GameOverManager._gameOver)
+            {
+                _anim.SetBool("GameOver", true);
+            }
+            else
+            {
+                _anim.SetBool("GameOver", false);
+            }
         }
     }
 
