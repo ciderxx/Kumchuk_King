@@ -22,7 +22,9 @@ public class TouchEvent : MonoBehaviour {
 
     public void TouchPoint()
     {
-#if UNITY_ANDROID
+#if UNITY_EDITOR
+        Debug.Log("EDITOR MODE");
+#elif UNITY_ANDROID
         Vector2 TouchPoint = Input.GetTouch(0).position;
 
         _point = Camera.main.ScreenToViewportPoint(TouchPoint);

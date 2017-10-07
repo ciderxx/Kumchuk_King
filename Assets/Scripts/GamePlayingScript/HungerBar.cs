@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HungerBar : MonoBehaviour {
 
+    public static HungerBar instance;
+
     public enum FruitType
     {
         gibon = 2,
@@ -20,12 +22,25 @@ public class HungerBar : MonoBehaviour {
     private RectTransform _maskRect;
 
     public float _maxHP;
-    public static bool _gameOver = false;
+    public bool _gameOver = false;
 
-    private float _currentHP;
+    [SerializeField]private float _currentHP;
     private float _maxHpBarWidth;
     private float _downSpeed = 1.0f;
     private float _healthSpeed = 0.005f;
+
+    void Awake()
+    {
+        if (instance)
+        {
+            Debug.Log("다중 인스턴스 감시 : 주의 바람");
+        }
+        else
+        {
+            instance = this;
+        }
+
+    }
 
     void Start()
     {
