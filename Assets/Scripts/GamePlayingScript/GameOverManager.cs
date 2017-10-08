@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour {
 
-    public static bool _gameOver;
-
     // Use this for initialization
     void Start () {
        
@@ -25,7 +23,6 @@ public class GameOverManager : MonoBehaviour {
     public void GameOver()
     {
         GameManager.inGame = false;
-        _gameOver = true;
         Invoke("GameOverNextScene",2.1f);
     }
 

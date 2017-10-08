@@ -44,15 +44,13 @@ public class PlayerMove : MonoBehaviour {
         if (GameManager.inGame)
         {
             Move();
-            if (GameOverManager._gameOver)
-            {
-                _anim.SetBool("GameOver", true);
-            }
-            else
-            {
-                _anim.SetBool("GameOver", false);
-            }
         }
+        if (HungerBar.instance._gameOver)
+        {
+            _anim.SetBool("GameOver", true);
+        }
+        else
+            return;
     }
 
     public int type // touch
