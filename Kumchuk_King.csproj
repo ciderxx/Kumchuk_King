@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BeStartScript\BeStartButtons.cs" />
     <Compile Include="Assets\Scripts\BeStartScript\BestScore.cs" />
+    <Compile Include="Assets\Scripts\CharacterShopScript\CharShopButtons.cs" />
     <Compile Include="Assets\Scripts\ExitScript\ExitButton.cs" />
     <Compile Include="Assets\Scripts\ExitScript\LastScore.cs" />
     <Compile Include="Assets\Scripts\GamePlayingScript\Fruit.cs" />

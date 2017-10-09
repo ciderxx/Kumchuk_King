@@ -5,11 +5,16 @@ using UnityScript;
 
 public class PlayerMove : MonoBehaviour {
 
+    [Header("Eat Audio")]
+    public AudioClip _audioClip;
+    public AudioSource _audioSource;
+
     private HungerBar _hungerScript;
     private GameScore _scoreScript;
 
     private float _moveSpeed = 3.3f;
 
+    [Header("StopPoint")]
     public float _stopPointR;
     public float _stopPointL;
 
@@ -18,7 +23,6 @@ public class PlayerMove : MonoBehaviour {
     private float _moveStop = 0f;
     private float _moveHurry = 10f;
     private float _stopTime = 0.8f;
-
 
     private IEnumerator _eat;
 
@@ -35,6 +39,7 @@ public class PlayerMove : MonoBehaviour {
 
     void Start()
     {
+        _audioSource.clip = _audioClip;
         _hungerScript = GameObject.FindObjectOfType<HungerBar>();
         _scoreScript = GameObject.FindObjectOfType<GameScore>();
     }
@@ -129,6 +134,7 @@ public class PlayerMove : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D fruit)
     {
+        _audioSource.Play();
         EatAnimation();
         if (fruit.transform.CompareTag("gibon"))
         {

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    [Header("Delay")]
     public GameObject _ReadyImage;
     public GameObject _StartImage;
+
+    [Header("Audio")]
+    public AudioClip _audioClip;
+    public AudioSource _audioSource;
 
     private int _temptime = 0;
 
@@ -13,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
+        _audioSource.clip = _audioClip;
         inGame = false;
     }
     private void Start()
@@ -37,10 +43,11 @@ public class GameManager : MonoBehaviour {
                 _ReadyImage.SetActive(true);
                 break;
             case 3:
+                Time.timeScale = 1;
+                inGame = true;
+                _audioSource.Play();
                 _ReadyImage.SetActive(false);
                 _StartImage.SetActive(true);
-                inGame = true;
-                Time.timeScale = 1;
                 break;
             case 4:
                 _StartImage.SetActive(false);
