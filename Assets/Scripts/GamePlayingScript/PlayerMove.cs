@@ -19,12 +19,12 @@ public class PlayerMove : MonoBehaviour {
     private float _moveHurry = 10f;
     private float _stopTime = 0.8f;
 
-
     private IEnumerator _eat;
 
     private bool _eatingType;
     private bool _direction;
     private int _type;
+    private bool _OverAni = true;
 
     private Animator _anim;
 
@@ -37,6 +37,10 @@ public class PlayerMove : MonoBehaviour {
     {
         _hungerScript = GameObject.FindObjectOfType<HungerBar>();
         _scoreScript = GameObject.FindObjectOfType<GameScore>();
+        if (!GameOverManager._gameOver)
+        {
+            _anim.SetBool("GameOver", false);
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class PlayerMove : MonoBehaviour {
         {
             _anim.SetBool("GameOver", true);
         }
+        Debug.Log(GameOverManager._gameOver);
     }
 
     public int type // touch

@@ -9,7 +9,7 @@ public class GameOverManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       
+        
     }
 	
 	// Update is called once per frame
@@ -19,14 +19,17 @@ public class GameOverManager : MonoBehaviour {
             GameOver();
         }
         else
+        {
+            _gameOver = false;
             return;
+        }
 	}
 
     public void GameOver()
     {
         GameManager.inGame = false;
         _gameOver = true;
-        Invoke("GameOverNextScene",2.1f);
+        Invoke("GameOverNextScene",2.5f);
     }
 
     private void GameOverNextScene()
